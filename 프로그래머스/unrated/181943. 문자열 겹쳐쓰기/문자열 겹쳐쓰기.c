@@ -8,9 +8,7 @@ char* solution(const char* my_string, const char* overwrite_string, int s) {
     // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
     char* answer = (char*)malloc(sizeof(char)*(strlen(my_string)+1));
     strcpy(answer, my_string);
-    
-    char* ptr = &answer[s];
-    strncpy(ptr, overwrite_string, strlen(overwrite_string));
+    strncpy(&answer[s], overwrite_string, strlen(overwrite_string));
     
     return answer;
 }
