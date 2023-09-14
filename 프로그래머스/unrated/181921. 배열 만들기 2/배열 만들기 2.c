@@ -5,7 +5,7 @@
 int* solution(int l, int r) {
     // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
     int idx = 0;
-    bool check = true;
+    int buf = 0;
     
     int* answer = (int*)malloc(sizeof(int) * 100);
     for(int i = 0; i < 100; i++){
@@ -13,29 +13,19 @@ int* solution(int l, int r) {
     }
     
     for(int i = l; i <= r; i++){
-        if(i % 10 == 5 || i % 10 == 0){
-            int len = 0;
-            int buf = i;
-            while(buf != 0){
-                buf /= 10;
-                len++;
-            }
-            char* temp = (char*)malloc(sizeof(char) * len + 1);
-            sprintf(temp, "%d", i);
-            for(int j = 0; j < len; j++){
-                if(temp[j] != '5' && temp[j] != '0'){
-                    check = false;
-                }
-            }
-            free(temp);
-            
-            if(check){
-                answer[idx] = i;
-                idx++;
-            }
+        buf = i;
+        while(buf != 0){
+            if(buf % 10 == 5 || buf % 10 == 0)
+                buf = buf / 10;
+            else
+                break;
         }
-        check = true;
+        if(buf == 0){
+            answer[idx] = i;
+            idx++;
+        }
     }
+        
     if(!(answer[0])) answer[0] = -1;
     
     return answer;
