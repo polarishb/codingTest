@@ -10,11 +10,9 @@ int* solution(int arr[], size_t arr_len, int** queries, size_t queries_rows, siz
     memcpy(answer, arr, sizeof(int) * arr_len);
     
     for(int i = 0; i < queries_rows; i++){
-        for(int j = 1; j < queries_cols; j++){
-            answer[*queries[i]] = answer[*queries[i]] ^ answer[queries[i][j]];
-            answer[queries[i][j]] = answer[*queries[i]] ^ answer[queries[i][j]];
-            answer[*queries[i]] = answer[*queries[i]] ^ answer[queries[i][j]];
-        }
+            answer[queries[i][0]] = answer[queries[i][0]] ^ answer[queries[i][1]];
+            answer[queries[i][1]] = answer[queries[i][0]] ^ answer[queries[i][1]];
+            answer[queries[i][0]] = answer[queries[i][0]] ^ answer[queries[i][1]];
     }
     
     return answer;
