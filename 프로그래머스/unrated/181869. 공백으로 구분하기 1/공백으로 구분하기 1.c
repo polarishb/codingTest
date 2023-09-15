@@ -11,10 +11,7 @@ char** solution(const char* my_string) {
         if (my_string[i] == ' ')
             count++;
     }
-
-    char* str = (char*)malloc(sizeof(char) * (strlen(my_string) + 1));
-    strcpy(str, my_string);
-    char* ptr = strtok(str, " ");
+    char* ptr = strtok(my_string, " ");
 
     char** answer = (char**)malloc(sizeof(char*) * (count + 1));
     for (int i = 0; i < count + 1; i++) {
@@ -23,5 +20,6 @@ char** solution(const char* my_string) {
         answer[i] = ptr;
         ptr = strtok(NULL, " ");
     }
+    
     return answer;
 }
