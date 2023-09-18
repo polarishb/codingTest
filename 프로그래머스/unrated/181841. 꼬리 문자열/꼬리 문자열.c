@@ -22,13 +22,7 @@ char* solution(const char* str_list[], size_t str_list_len, const char* ex) {
     for(int i = 0; i < str_list_len; i++){
         if(strstr(str_list[i], ex))
             continue;
-        else{
-            for(int j = 0; j < strlen(str_list[i]); j++){
-                answer[idx] = str_list[i][j];
-                idx++;
-            }
-        }
-
+        answer = strcat(answer, str_list[i]);
     }
     
     return answer;
