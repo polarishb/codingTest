@@ -17,44 +17,27 @@ int** solution(int n) {
         memset(answer[i], 0, sizeof(int) * n);
     }
 
-    int idx = 0;
-    int num = 0;
-    int x = 0;
-    int y = -1;
-    int wallX[2] = { 0, n - 1 };
-    int wallY[2] = { 0, n - 1 };
+    int table = n / 2;
+    int num = 1;
+    int wall = n - 1;
 
-    while (num++ < n * n) {
-        switch (idx % 4) {
-            case right:
-                answer[x][++y] = num;
-                if (y == wallY[1]) {
-                    idx++;
-                    wallX[0]++;
-                }
-                break;
-            case down:
-                answer[++x][y] = num;
-                if (x == wallX[1]) {
-                    idx++;
-                    wallY[1]--;
-                }
-                break;
-            case left:
-                answer[x][--y] = num;
-                if (y == wallY[0]) {
-                    idx++;
-                    wallX[1]--;
-                }
-                break;
-            case up:
-                answer[--x][y] = num;
-                if (x == wallX[0]) {
-                    idx++;
-                    wallY[0]++;
-                }
-                break;
+    for (int i = 0; i < table; i++) {
+        for (int j = 0; j < wall; j++) {
+            answer[i][i + j] = num++;
         }
+        for (int j = 0; j < wall; j++) {
+            answer[i + j][wall + i] = num++;
+        }
+        for (int j = 0; j < wall; j++) {
+            answer[wall + i][wall + i - j] = num++;
+        }
+        for (int j = 0; j < wall; j++) {
+            answer[wall + i - j][i] = num++;
+        }
+        wall -= 2;
+    }
+    if(n % 2 == 1){
+        answer[table][table] = num;
     }
     
     return answer;
