@@ -11,8 +11,7 @@ int** solution(int** arr, size_t arr_rows, size_t arr_cols) {
     for(int i = 0; i < big; i++){
         answer[i] = (int*)malloc(sizeof(int) * big);
         memset(answer[i], 0, sizeof(int) * big);
-        if(big == arr_rows) memcpy(answer[i], arr[i], sizeof(int) * arr_cols);
-        else if(i < arr_rows) memcpy(answer[i], arr[i], sizeof(int) * arr_cols);
+        if(i < arr_rows) memcpy(answer[i], arr[i], sizeof(int) * arr_cols);
     }
     return answer;
 }
