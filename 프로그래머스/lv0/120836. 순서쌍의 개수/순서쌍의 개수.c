@@ -7,15 +7,7 @@ int solution(int n) {
     int num = n;
     
     for(int i = 1; i <= n; i++){
-        for(int j = n; j >= i; j--){
-            if(i * j == num){
-                answer += 2;
-                if(i == j) answer--;
-                n = j;
-                break;
-            }
-            
-        }
+        if(n % i == 0) answer++;
     }
     return answer;
 }
