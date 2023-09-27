@@ -4,11 +4,10 @@
 
 long long solution(int a, int b) {
     long long answer = 0;
-    int i = a > b ? b : a;
-    int j = a > b ? a : b;
+    long long sum = a + b;
+    long long num = a > b ? a - b + 1 : b - a + 1;
     
-    for(; i <= j; i++){
-        answer += i;
-    }
+    answer = sum * num / 2;
+    
     return answer;
 }
