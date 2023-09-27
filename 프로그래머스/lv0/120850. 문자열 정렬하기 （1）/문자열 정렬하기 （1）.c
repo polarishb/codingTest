@@ -12,9 +12,12 @@ int* solution(const char* my_string) {
     int* answer = (int*)malloc(sizeof(int) * strlen(my_string));
     memset(answer, NULL, sizeof(int) * strlen(my_string));
     int idx = 0;
+    
     for(int i = 0; i < strlen(my_string); i++){
         if(my_string[i] <= '9') answer[idx++] = my_string[i] - '0';
     }
+    
+    answer = realloc(answer, sizeof(int) * idx);
     qsort(answer, idx, sizeof(int), compare);
     
     return answer;
