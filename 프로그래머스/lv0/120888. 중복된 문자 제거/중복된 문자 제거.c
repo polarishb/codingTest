@@ -8,15 +8,9 @@ char* solution(const char* my_string) {
     char* answer = (char*)malloc(sizeof(char) * (strlen(my_string) + 1));
     memset(answer, '\0', sizeof(char) * (strlen(my_string) + 1));
     
-    bool check = true;
-    
     int idx = 0;
     for(int i = 0; i < strlen(my_string); i++){
-        check = true;
-        for(int j = 0; j < idx; j++){
-            if(answer[j] == my_string[i]) check = false;
-        }
-        if(check) answer[idx++] = my_string[i];
+        if(!strchr(answer, my_string[i])) answer[idx++] = my_string[i];
     }
     
     answer = realloc(answer, sizeof(char) * idx);
