@@ -6,11 +6,11 @@
 char* solution(const char* my_string) {
     // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
     char* answer = (char*)malloc(sizeof(char) * (strlen(my_string) + 1));
-    memset(answer, '\0', sizeof(char) * (strlen(my_string) + 1));
+    memcpy(answer, my_string, sizeof(char) * (strlen(my_string) + 1));
     
     for(int i = 0; i < strlen(my_string); i++){
-        if(my_string[i] < 'a') answer[i] = tolower(my_string[i]);
-        else answer[i] = toupper(my_string[i]);
+        answer[i] ^= 32;
     }
+    
     return answer;
 }
