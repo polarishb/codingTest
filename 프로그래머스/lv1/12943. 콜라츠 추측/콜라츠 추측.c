@@ -10,13 +10,8 @@ int solution(long long num) {
             answer = -1;
             break;
         }
-        if(num % 2 == 0){
-            num /= 2;
-        }
-        else{
-            num *= 3;
-            num++;
-        }
+        num = num % 2 == 0 ? num / 2 : num * 3 + 1;
+        
         answer++;
     }
     
