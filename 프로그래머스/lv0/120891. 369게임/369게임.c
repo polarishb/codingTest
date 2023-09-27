@@ -5,13 +5,7 @@
 int solution(int order) {
     int answer = 0;
     while(order){
-        switch(order % 10){
-            case 3:
-            case 6:
-            case 9:
-                answer++;
-                break;
-        }
+        if(order % 10 && !(order % 10 % 3)) answer++;
         order /= 10;
     }
     return answer;
