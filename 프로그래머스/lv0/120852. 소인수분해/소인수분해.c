@@ -10,14 +10,11 @@ int* solution(int n) {
     int idx = 0;
     
     while(n > 1){
-        while(n % num == 0){
-            if(idx == 0){
-                answer[idx++] = num;
+        if(!(n % num)){
+            answer[idx++] = num;
+            while(!(n % num)){
+                n /= num;
             }
-            else if(answer[idx - 1] != num){
-                answer[idx++] = num;
-            }
-            n /= num;
         }
         num++;
     }
