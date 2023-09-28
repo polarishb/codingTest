@@ -22,5 +22,7 @@ int* solution(int n) {
         num++;
     }
     
+    answer = realloc(answer, sizeof(int) * idx);
+    
     return answer;
 }
