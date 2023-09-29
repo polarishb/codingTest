@@ -18,23 +18,11 @@ int* solution(int** score, size_t score_rows, size_t score_cols) {
         sum[i] = (score[i][0] + score[i][1]);
     }
     
-    int rank = 1;
-    int time = 0;
-    
     qsort(sum, score_rows, sizeof(int), compare);
     for(int i = 0; i < score_rows; i++){
-        if(i != 0 && sum[i] == sum[i-1]){
-            rank--;
-            rank -= time;
-            time++;
-        }
-        else{
-            time = 0;
-        }
         for(int j = 0; j < score_rows; j++){
-            if(!answer[j] && sum[i] == score[j][0] + score[j][1]){
-                answer[j] = rank++;
-                rank += time;
+            if(score[i][0] + score[i][1] == sum[j]){
+                answer[i] = j + 1;
                 break;
             }
         }
