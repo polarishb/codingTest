@@ -8,8 +8,7 @@
 char* solution(const char* id_pw[], size_t id_pw_len, const char*** db, size_t db_rows, size_t db_cols) {
     // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
     char* value[3] = {"login", "fail", "wrong pw"};
-    int n = 0;
-    bool check = false;
+    int n = 1;
     char** answer = (char**)malloc(sizeof(char*) * 3);
     for(int i = 0; i < 3; i++){
         answer[i] = (char*)malloc(sizeof(char) * (strlen(value[i]) + 1));
@@ -20,16 +19,8 @@ char* solution(const char* id_pw[], size_t id_pw_len, const char*** db, size_t d
         if(!strcmp(id_pw[0], db[i][0])){
             if(!strcmp(id_pw[1], db[i][1]))
                 n = 0;
-            else{
-                check = true;
-                n = 2;
-            }
-        }
-        else{
-            if(check)
-                n = 2;
             else
-                n = 1;
+                n = 2;
         }
     }
     
