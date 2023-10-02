@@ -1,12 +1,10 @@
-#include <stdio.h>
-
 int main() {
-    int A = 0;
-    int B = 0;
+    long long A = 0;
+    long long B = 0;
 
-    scanf("%d %d", &A, &B);
+    scanf("%lld %lld", &A, &B);
 
-    printf("%d", A * A - B * B);
+    printf("%lld", A * A - B * B);
     
     return 0;
 }
